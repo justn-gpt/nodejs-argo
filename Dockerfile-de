@@ -2,6 +2,10 @@ FROM node:alpine3.20
 
 WORKDIR /tmp
 
+# 先复制 package-de.json 并改名为 package.json，保证 npm install 用 DE 版依赖
+COPY package-de.json package.json
+
+# 再复制其他所有代码文件
 COPY . .
 
 EXPOSE 3000/tcp
